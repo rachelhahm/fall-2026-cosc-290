@@ -1,5 +1,5 @@
 def modularRecursive(x: int, y: int, z: int):
-    equation = (x ** y) % z
+    equation = (xcd ** y) % z
     if y!=1:
         if y%2 == 0:
             return ((modularRecursive(x,(y//2),z))**2)%z
