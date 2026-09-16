@@ -46,13 +46,16 @@ def read_test_cases(path: str) -> list[TestCase]:
 
 def fast_mod(x: int, y: int, m: int):
     r: int = 1
-    a= a%m
+    x= (x%m)
     while y>0:
-        if y%2==1:
-            r= r*a%m
-        a= a*a%m
+        if (y%2)==1:
+            r= (r*x)%m
+        x= (x*x)%m
         y= y//2
     return r
+
+def get_shared_key(g: int, n: int, a: int, b: int):
+    return fast_mod(g, a * b, n)
 
 def main() -> None:
     if len(sys.argv) != 2:
@@ -76,6 +79,15 @@ def main() -> None:
         print(f"  a   = {tc.a}")
         print(f"  b   = {tc.b}")
         print(f"  key = {tc.key}")
+        print()
+    print ("Computed shared keys:")
+    for i, tc in enumerate(test_cases, start=1):
+        computed_key = get_shared_key(tc.g, tc.n, tc.a, tc.b)
+        print(f"Test case {i}: computed key = {computed_key}, expected key = {tc.key}")
+        if computed_key == tc.key:
+            print("  Result: PASS")
+        else:
+            print("  Result: FAIL")
         print()
 
 main()
