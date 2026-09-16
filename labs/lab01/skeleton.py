@@ -80,14 +80,4 @@ def main() -> None:
         print(f"  b   = {tc.b}")
         print(f"  key = {tc.key}")
         print()
-    print ("Computed shared keys:")
-    for i, tc in enumerate(test_cases, start=1):
-        computed_key = get_shared_key(tc.g, tc.n, tc.a, tc.b)
-        print(f"Test case {i}: computed key = {computed_key}, expected key = {tc.key}")
-        if computed_key == tc.key:
-            print("  Result: PASS")
-        else:
-            print("  Result: FAIL")
-        print()
-
 main()
