@@ -44,6 +44,16 @@ def read_test_cases(path: str) -> list[TestCase]:
 
     return test_cases
 
+def fast_mod(x: int, y: int, m: int):
+    r: int = 1
+    a= a%m
+    while y>0:
+        if y%2==1:
+            r= r*a%m
+        a= a*a%m
+        y= y//2
+    return r
+
 def main() -> None:
     if len(sys.argv) != 2:
         print(f"Usage: python3 {sys.argv[0]} <data_filename.txt>")
