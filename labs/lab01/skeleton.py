@@ -44,6 +44,19 @@ def read_test_cases(path: str) -> list[TestCase]:
 
     return test_cases
 
+def fast_mod(x: int, y: int, m: int):
+    r: int = 1
+    x= (x%m)
+    while y>0:
+        if (y%2)==1:
+            r= (r*x)%m
+        x= (x*x)%m
+        y= y//2
+    return r
+
+def get_shared_key(g: int, n: int, a: int, b: int):
+    return fast_mod(g, a * b, n)
+
 def main() -> None:
     if len(sys.argv) != 2:
         print(f"Usage: python3 {sys.argv[0]} <data_filename.txt>")
@@ -67,5 +80,4 @@ def main() -> None:
         print(f"  b   = {tc.b}")
         print(f"  key = {tc.key}")
         print()
-
 main()
